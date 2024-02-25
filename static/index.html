@@ -15,7 +15,7 @@
 
 <script>
     async function fetchRoll() {
-        const res = await fetch('/roll')
+        const res = await fetch('/roll?d=20')
         resText = await res.text()
         document.getElementById('roll-res').innerHTML = resText
     }

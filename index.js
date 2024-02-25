@@ -4,15 +4,19 @@ const port = process.env.PORT || 3000
 
 const app = express()
 
+var url = require('url')
+
+
 app.use(express.static(__dirname + '/static'))
 app.use(cors({ origin: '*' }))
 
 app.get('/', (req, res) => res.render('home'))
 
+// generate random number based on the "d" value passed by the url
 app.get('/roll', (request, response) => {
 	console.log('Calling "/roll".')
-
-    let roll = Math.floor(Math.random() * 20) + 1
+    var inputs = url.parse(request.url, true).query
+    let roll = Math.floor(Math.random() * parseInt(inputs.d)) + 1
     response.send(roll.toString())
 })
 
