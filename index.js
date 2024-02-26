@@ -6,18 +6,7 @@ const app = express()
 
 var url = require('url')
 
-
 app.use(express.static(__dirname + '/static'))
-
-const corsOptions = {
-    // block requests from origins that do not match the following
-    origin: "https://wonderful-tree-04bcf0610.4.azurestaticapps.net/",
-    methods: "GET",
-    allowedHeaders: 'Access-Control-Allow-Origin',
-    optionsSuccessStatus: 200,
-}
-
-app.use(cors(corsOptions))
 
 app.get('/', (req, res) => res.render('home'))
 
